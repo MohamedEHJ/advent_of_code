@@ -2,7 +2,6 @@
 # X for Rock, Y for Paper, and Z for Scissors
 
 wins = {'A': 'Y', 'B': 'Z', 'C': 'X'}
-loses = {'A': 'Z', 'B': 'X', 'C': 'Y'}
 draw = {'A': 'X', 'B': 'Y', 'C': 'Z'}
 
 pts = {'A': 1, 'B': 2, 'C': 3}
@@ -33,3 +32,37 @@ def score(rounds):
     return score
 
 print(score(lines))
+
+# part 2
+# A for Rock, B for Paper, and C for Scissors
+# X for Rock, Y for Paper, and Z for Scissors
+
+indication = {'X': 'loose', 'Y': 'draw', 'Z': 'win'}
+loses = {'A': 'Z', 'B': 'X', 'C': 'Y'}
+
+
+def score_indication(rounds):
+    score = 0
+
+    for round in rounds:
+        # loose 
+        if round[2] == 'X':
+            choice = loses[round[0]]
+            score += pts_you[choice]
+            continue
+
+        # draw
+        if round[2] == 'Y':
+            choice = draw[round[0]]
+            score += pts_you[choice] + 3
+            continue
+
+        # win
+        if round[2] == 'Z':
+            choice = wins[round[0]]
+            score += pts_you[choice] + 6
+            continue
+
+    return score
+
+print(score_indication(lines))
