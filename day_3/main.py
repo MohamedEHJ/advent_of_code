@@ -26,3 +26,24 @@ def priority(lines):
     return sum_priority
 
 print(priority(lines))
+
+# part 2
+
+def badges_priority(lines):
+
+    s = 0
+    # read file by chunks of 3 lines
+    for i in range(len(lines)):
+        if i % 3 == 0:
+            line1 = lines[i].strip()
+            line2 = lines[i+1].strip()
+            line3 = lines[i+2].strip()
+
+            # intersection of two sets
+            shared = set(line1).intersection(set(line2), set(line3))
+
+            s += sum(both[letter] for letter in shared)
+
+    return s
+    
+print(badges_priority(lines))
