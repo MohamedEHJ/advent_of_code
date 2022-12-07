@@ -17,8 +17,15 @@ def max_calories_elf(input):
         # if line is not empty, add line to sum of a single elf
         else:
             sum += int(line.strip())
-    return max(elves)
+    return elves, max(elves)
 
-print(max_calories_elf(lines))
+elves, max_calories_elf = max_calories_elf(lines)
+print(max_calories_elf)
 
     
+def top_three_elves(elves):
+    elves = sorted(elves, reverse=True)
+    return elves[:3]
+
+top_three_elves = top_three_elves(elves)
+print(sum(top_three_elves))
