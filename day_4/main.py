@@ -3,7 +3,7 @@ with open("input.txt") as f:
     lines = f.readlines()
 
 
-def count_overlap(lines):
+def count_full_overlap(lines):
 
     cpt = 0
     for line in lines:
@@ -23,5 +23,28 @@ def count_overlap(lines):
 
     return cpt
 
+
+print(count_full_overlap(lines))
+
+# part 2
+
+def count_overlap(lines):
+
+    cpt = 0
+    for line in lines:
+        line = line.strip().split(",")
+
+        range_1 = line[0].split("-")
+        range_2 = line[1].split("-")
+        
+        range_1 = [i for i in range(int(range_1[0]), int(range_1[1]) + 1)]
+        range_2 = [i for i in range(int(range_2[0]), int(range_2[1]) + 1)]
+        
+        temp = [i for i in range_1 if i in range_2]
+        
+        if len(temp) > 0:
+            cpt += 1
+            
+    return cpt
 
 print(count_overlap(lines))
